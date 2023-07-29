@@ -1,0 +1,29 @@
+.video-card{
+    border: 2px solid;
+    width: 300px;
+    position: relative;
+}
+.video-card-details{
+    display: flex;
+    gap:0.5rem;
+}
+.detail-img{
+    border-radius: 50%;
+}
+.video-title,.video-category{
+    font-weight: 600;
+}
+.video-card-img{
+    width:100%;
+}
+.video-title,.video-category,.video-views-creator{
+    margin:5px 0;
+}
+.watch-later-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+    background-color: cadetblue;
+    padding: 5px;
+}

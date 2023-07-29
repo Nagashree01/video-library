@@ -1,0 +1,8 @@
+.home-section{
+    margin-left: 200px;
+}
+.categories-section{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1rem;
+}

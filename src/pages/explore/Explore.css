@@ -1,0 +1,18 @@
+.explore-page-layout{
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+
+.search-input{
+    margin:20px;
+    width: 40%;
+    height: 5vh;
+    font-size: 1rem;
+}
+.explore-videos-section{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1rem;
+}
