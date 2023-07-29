@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { videos } from "../../data/videos";
 import "./VideoDetails.css";
@@ -16,6 +16,8 @@ export const VideoDetails = () => {
     (video) => video._id !== Number(videoId)
   );
   const { _id, title, thumbnail, src } = videoDetails;
+
+  const [playistModel, setPlaylistModel] = useState(false);
   return (
     <div className="video-details-layout">
       <div className="video-details-section">
@@ -40,7 +42,6 @@ export const VideoDetails = () => {
             <MdOutlineWatchLater
               className="video-action-icon"
               onClick={() => {
-                console.log("click");
                 dispatch({ type: "ADD_TO_WATCHLATER", payload: videoDetails });
               }}
             />
@@ -72,6 +73,8 @@ export const VideoDetails = () => {
           </div>
         ))}
       </div> */}
+
+      {playistModel && <form className="form">New Playlist</form>}
     </div>
   );
 };

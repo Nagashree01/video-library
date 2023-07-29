@@ -3,11 +3,28 @@ import { videos } from "../data/videos";
 
 export const DataContext = createContext();
 
-const initialState = { playlist: [], watchlater: [], videos: videos };
+const initialState = {
+  playlist: [
+    { id: 1, name: "LOFI", videolist: [] },
+    { id: 2, name: "Mood", videolist: [] },
+  ],
+  watchlater: [],
+  videos: videos,
+};
 const reducerFunc = (state, action) => {
   switch (action.type) {
     case "ADD_TO_WATCHLATER":
       return { ...state, watchlater: [...state.watchlater, action.payload] };
+    case "DELETE_FROM_WATCHLATER":
+      return {
+        ...state,
+        watchlater: state.watchlater.filter(
+          (video) => video._id !== action.payload
+        ),
+      };
+    case "ADD_TO_PLAYLIST":
+      const newPlaylist = 0;
+      return { ...state, playlist: [...state.playlist, action.payload] };
     default:
       return state;
   }
@@ -29,11 +46,18 @@ export const DataContextProvider = ({ children }) => {
   localStorage.setItem("details", JSON.stringify(state));
   console.log(state);
 
+  const checkIsPresentInWatchlater = (video) =>
+    state.watchlater.some(
+      (watchlaterVideo) => watchlaterVideo._id === video._id
+    );
+
   useEffect(() => {
     localStorage.setItem("details", JSON.stringify(state));
   }, [state]);
   return (
-    <DataContext.Provider value={{ state, dispatch }}>
+    <DataContext.Provider
+      value={{ state, dispatch, checkIsPresentInWatchlater }}
+    >
       {children}
     </DataContext.Provider>
   );
