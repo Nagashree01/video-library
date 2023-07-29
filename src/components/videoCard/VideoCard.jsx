@@ -43,8 +43,7 @@ export const VideoCard = ({ videoInfo }) => {
       {isPresentInWatchlater ? (
         <div
           className="delete-icon"
-          onclick={() => {
-            console.log("clicked");
+          onClick={() => {
             dispatch({ type: "DELETE_FROM_WATCHLATER", payload: _id });
           }}
         >
@@ -53,7 +52,7 @@ export const VideoCard = ({ videoInfo }) => {
       ) : (
         <div
           className="watch-later-icon"
-          onclick={() => {
+          onClick={() => {
             dispatch({ type: "ADD_TO_WATCHLATER", payload: videoInfo });
           }}
         >

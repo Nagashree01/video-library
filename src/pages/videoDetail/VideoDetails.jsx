@@ -18,6 +18,11 @@ export const VideoDetails = () => {
   const { _id, title, thumbnail, src } = videoDetails;
 
   const [playistModel, setPlaylistModel] = useState(false);
+  const [playlistInfo, setPlaylistInfo] = useState({
+    name: "",
+    playlistVideo: {},
+  });
+  const handleFormSubmit = () => {};
   return (
     <div className="video-details-layout">
       <div className="video-details-section">
@@ -45,12 +50,17 @@ export const VideoDetails = () => {
                 dispatch({ type: "ADD_TO_WATCHLATER", payload: videoDetails });
               }}
             />
-            <MdPlaylistAdd className="video-action-icon" onClick={() => {}} />
+            <MdPlaylistAdd
+              className="video-action-icon"
+              onClick={() => {
+                setPlaylistModel(true);
+              }}
+            />
             <MdNotes className="video-action-icon" onClick={() => {}} />
           </div>
         </div>
       </div>
-      {/* <div className="video-suggest-section">
+      <div className="video-suggest-section">
         <h3>More videos:</h3>
         {otherVideosSuggestion.map(({ _id, title, thumbnail, creator }) => (
           <div
@@ -72,9 +82,31 @@ export const VideoDetails = () => {
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
 
-      {playistModel && <form className="form">New Playlist</form>}
+      {playistModel && (
+        <form className="form">
+          <div className="form-contents">
+            New Playlist
+            <span
+              className="close"
+              onClick={() => {
+                setPlaylistModel(false);
+              }}
+            >
+              &times;
+            </span>
+            <input
+              type="text"
+              placeholder="playlist-name"
+              name="name"
+              value={playlistInfo.name}
+            />
+            <button>Add video</button>
+            <button onClick={setPlaylistModel(false)}>Cancel</button>
+          </div>
+        </form>
+      )}
     </div>
   );
 };
